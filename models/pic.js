@@ -14,7 +14,7 @@ var picSchema = new mongoose.Schema({
     aperature: String,
     shutterSpeed: String,
     iso: String,
-    // this 'author' object helps associate a user with a newly created campground.
+    // this 'author' object helps associate a user with a newly created pic.
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
