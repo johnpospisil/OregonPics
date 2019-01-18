@@ -1,0 +1,28 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar-brand {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card-body {
+    padding: 9px;
+}
+
+.card {
+    border: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.delete-form {
+    display: inline;
+}
+
