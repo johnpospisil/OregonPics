@@ -1,0 +1,69 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">OregonPics</p>
+            <div class=list-group>
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card"> 
+                <div class="card-body">
+                    <img class="img-fluid" src="<%= pic.picURL %>">
+                    <div class="row justify-content-between">
+                        <h4><a href=""><%= pic.picName %></a></h4>
+                        <h4><%= pic.picLocation %></h4>
+                    </div>
+                    <p><%= pic.picDescription %></p>
+                    <p><em>Submitted By: <%= pic.author.username %></em></p>
+                    <!-- if there is a current user, AND if the campground's user id is the same as the current user's id, -->
+                    <!-- then show the EDIT and DELETE buttons.-->
+                    <% if(currentUser && pic.author.id.equals(currentUser._id)) { %>
+                        <a class="btn btn-sm btn-outline-warning" href="/pics/<%= pic._id %>/edit">Edit</a>
+                        <form class="delete-form" action="/pics/<%= pic._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="text-right">
+                        <a class="btn btn-sm btn-outline-success" href="/pics/<%= pic._id %>/comments/new">Add New Comment</a>
+                    </div>
+                    <hr>
+                    <!--show all comments -->
+                    <% pic.comments.forEach(function(comment) { %>
+                        <div class="row justify-content-between">
+                            <strong><%= comment.author.username %></strong>
+                            <span>10 days ago</span>
+                        </div>
+                        <p><%= comment.text %></p>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                            <a class="btn btn-sm btn-outline-warning" href="/pics/<%= pic._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                            <form class="delete-form" action="/pics/<%= pic._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        <% } %>
+                        <hr>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<% include ../partials/footer %>
+
+
+
+
+
+ 

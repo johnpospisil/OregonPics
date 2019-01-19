@@ -2,10 +2,11 @@
 
 body {
   background-color: #000;
+  font-family: 'Raleway', sans-serif;
 }
 
 .btn {
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
 #landing-header {
@@ -15,12 +16,11 @@ body {
   padding-top: 40vh;
 }
 
-#landing-header h1 {
+h1, h2 {
   color: #fff;
-}
-
-h2 {
-  color: #fff;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 
+				0px 8px 13px rgba(0,0,0,0.1), 
+				0px 18px 23px rgba(0,0,0,0.1);
 }
 
 .ubuntu {
@@ -69,7 +69,7 @@ h2 {
   animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url(https://images.unsplash.com/photo-1436505743955-a98c0d3eb1a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);
+  background-image: url(https://images.unsplash.com/photo-1447957781261-96a39620d6d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80);
   animation-delay: 40s; 
 }
 

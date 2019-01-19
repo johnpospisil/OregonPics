@@ -1,0 +1,48 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row d-flex flex-column">
+        <h1 class="text-center">Add a New Picture!</h1>
+        <div style="width: 40%; margin: 25px auto;">
+            <form action="/pics" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="picName" placeholder="pic title">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="picURL" placeholder="image url">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="picDescription" placeholder="description">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="picLocation" placeholder="location">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cameraMake" placeholder="camera make">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cameraModel" placeholder="camera model">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="focalLength" placeholder="focal length">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="aperature" placeholder="aperature">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="shutterSpeed" placeholder="shutter speed">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="iso" placeholder="ISO">
+                </div>
+                
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!!!</button>
+                </div>
+            </form>  
+            <a href="/pics">Go Back</a> 
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
