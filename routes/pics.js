@@ -35,7 +35,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
         id: req.user._id,
         username: req.user.username
     };
-    var newPic = {picName: picName, picURL: picURL, picDescription: picDescription, picLocation: picLocation, cameraMake: cameraMake, cameraModel: cameraModel, focalLength: focalLength, aperature: aperature, shutterSpeed: shutterSpeed, iso: iso};
+    var newPic = {picName: picName, picURL: picURL, picDescription: picDescription, picLocation: picLocation, cameraMake: cameraMake, cameraModel: cameraModel, focalLength: focalLength, aperature: aperature, shutterSpeed: shutterSpeed, iso: iso, author: author};
     // console.log(req.user);
     // Create a new pic and save to DB
     Pic.create(newPic, function(err, newlyCreated) {
