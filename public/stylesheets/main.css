@@ -1,5 +1,11 @@
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-link.btn {
+    color:white;
+    padding: 4px;
+    margin: 4px;
 }
 
 .register {
@@ -8,6 +14,7 @@ body {
     margin-top: 15px;
     color: white;
     border-radius: 0.3rem;
+    border: darkgray 1px solid;
 }
 
 .login {
@@ -16,33 +23,38 @@ body {
     margin-top: 15px;
     color: white;
     border-radius: 0.3rem;
+    border: darkgray 1px solid;
 }
 
 .jumbotron {
     padding: 30px 15px;
-    margin: 15px;
-    border: solid darkgray 1px;
+    margin: 15px 0 30px 0;
+    border: solid silver 3px;
+    background-image: url(https://images.unsplash.com/photo-1465067854253-edf4a67fef86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80);
+    color: white;
+    border-radius: 0.3rem;
 }
 
 .card-img-top {
-    border: solid lightgray 1px;
+    border: solid gainsboro 1px;
 }
 
 .card-body {
-    border: solid lightgray 1px;
-    margin-bottom: 10px;
+    border: solid gainsboro 1px;
+    padding: 10px 10px 15px 10px;
+    margin-bottom: 15px;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
 }
 
-.navbar-brand {
-    font-family: 'Ubuntu', sans-serif;
+.fa-camera-retro {
+    margin: auto;
 }
 
 .card img {
     width: 100%;
-}
-
-.card-body {
-    padding: 9px;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
 }
 
 .card {

@@ -1,26 +1,24 @@
 <% include ../partials/header %>
 
 <div class="container"> <!-- adds space to the left and right of the page/div-->
- 
+    
     <header class="jumbotron">
         <div class="container"> <!-- Allows space between the text and the jumbotron border for small screens-->
-            <h1>Welcome to OregonPics!</h1>   
-            <p>See hand-picked pics from the great state of OREGON</p>
-            <a class="btn btn-outline-primary btn-lg" href="/pics/new">Add New Pic</a> 
+            <h1>Beautiful Pics from the Great State of</h1>  
+            <h2 class="display-4">OREGON</h2>
+            <p>A place to see and share photos of Oregon</p>
+            <a class="btn btn-primary btn-lg" href="/pics/new">Share A Picture</a> 
         </div>
     </header>
     
     <div class="card"> 
-    <!--removed from the above line: style="display:flex; flex-wrap:wrap"--> 
-    <!--The above styles allow the grid of pics to be more even. -->
-
         <div class="row text-center">
             <% pics.forEach(function(pic) { %>
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <img class="card-img-top" src="<%= pic.picURL %>">
                     <div class="card-body">
-                        <h4 class="card-title"><%= pic.picName %></h4>
-                        <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary"> More Info</a>
+                        <p class="card-title"><%= pic.picName %></p>
+                        <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"> More Info</a>
                     </div>
                 </div>
             <% }); %>

@@ -2,6 +2,11 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var Pic = require("../models/pic");
+// Add these 3 lines to enable password reset
+// var async = require("async");
+// var nodemailer = require("nodemailer");
+// var crypto = require("crypto");
 
 // ROUTES - most routes moved to ther files in the '/route' folder.
 router.get("/", function(req, res) {
@@ -30,7 +35,7 @@ router.post("/register", function(req,res){
         // logs in the user using the serialize method, using the 'local' strategy
         // you can swap 'local' to 'twitter', 'facebook' to change login strategy
         passport.authenticate("local")(req, res, function() {
-            req.flash("success", "Welcome to OregonPics " + user.username);
+            req.flash("success", "Welcome to OregonPics " + user.username + "! You are currently Logged In.");
             res.redirect("/pics");
         });
     });
