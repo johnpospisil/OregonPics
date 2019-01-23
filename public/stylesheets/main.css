@@ -3,9 +3,12 @@ body {
 }
 
 .nav-link.btn {
-    color:white;
     padding: 4px;
     margin: 4px;
+}
+
+.navbar-nav {
+    color: white;
 }
 
 .register {
