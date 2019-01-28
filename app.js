@@ -19,9 +19,10 @@ var indexRoutes = require("./routes/index"),
     commentRoutes = require("./routes/comments");
     
 // connect mongoose to either mLab, or Cloud9. If mLab DB is not avilable, connect to Cloud9 DB.   
+// mongodb://<dbuser>:<dbpassword>@ds149984.mlab.com:49984/oregonpics
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/oregon_pics";
-mongoose.connect(url);
-console.log(url);
+mongoose.connect(url, {useNewUrlParser: true});
+// console.log(url);
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
