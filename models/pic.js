@@ -14,6 +14,10 @@ var picSchema = new mongoose.Schema({
     aperature: String,
     shutterSpeed: String,
     iso: String,
+    // Add the following three lines for Google Maps integration
+    location: String,
+    lat: Number,
+    lng: Number,
     // this 'author' object helps associate a user with a newly created pic.
     author: {
         id: {

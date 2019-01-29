@@ -6,34 +6,44 @@
         <div style="width: 40%; margin: 25px auto;">
             <form action="/pics/<%= pic._id %>/?_method=PUT" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[picName]" value="<%= pic.picName %>">
+                    <label for="picName">Title</label>
+                    <input class="form-control" type="text" name="pic[picName]" id="picName" value="<%= pic.picName %>">
                 </div>
                  <div class="form-group">
-                    <input class="form-control" type="text" name="pic[picURL]" value="<%= pic.picURL %>">
+                     <label for="picURL">URL</label>
+                    <input class="form-control" type="text" name="pic[picURL]" id="picURL" value="<%= pic.picURL %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[picDescription]" value="<%= pic.picDescription %>">
+                    <label for="picDescription">Description</label>
+                    <input class="form-control" type="text" name="pic[picDescription]" id="picDescription" value="<%= pic.picDescription %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[picLocation]" value="<%= pic.picLocation %>">
+                    <label for="cameraMake">Camera Make</label>
+                    <input class="form-control" type="text" name="pic[cameraMake]" id="cameraMake" value="<%= pic.cameraMake %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[cameraMake]" value="<%= pic.cameraMake %>">
+                    <label for="cameraModel">Camera Model</label>
+                    <input class="form-control" type="text" name="pic[cameraModel]" id="cameraModel" value="<%= pic.cameraModel %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[cameraModel]" value="<%= pic.cameraModel %>">
+                    <label for="focalLength">Focal Length</label>
+                    <input class="form-control" type="text" name="pic[focalLength]" id="focalLength" value="<%= pic.focalLength %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[focalLength]" value="<%= pic.focalLength %>">
+                    <label for="aperature">Aperture</label>
+                    <input class="form-control" type="text" name="pic[aperature]" id="aperature" value="<%= pic.aperature %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[aperature]" value="<%= pic.aperature %>">
+                    <label for="shutterSpeed">Shutter Speed</label>
+                    <input class="form-control" type="text" name="pic[shutterSpeed]" id="shutterSpeed" value="<%= pic.shutterSpeed %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[shutterSpeed]" value="<%= pic.shutterSpeed %>">
+                    <label for="iso">ISO</label>
+                    <input class="form-control" type="text" name="pic[iso]" id="iso" value="<%= pic.iso %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pic[iso]" value="<%= pic.iso %>">
+                    <label for="location">Location</label>
+                    <input class="form-control" type="text" name="location" id="location" value="<%= pic.location %>">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-outline-primary btn-block">Submit!!!</button>
