@@ -24,7 +24,8 @@
                     <p><em>Submitted By: <%= pic.author.username %></em></p>
                     <!-- if there is a current user, AND if the campground's user id is the same as the current user's id, -->
                     <!-- then show the EDIT and DELETE buttons.-->
-                    <% if(currentUser && pic.author.id.equals(currentUser._id)) { %>
+                    <!-- Also allow administrators to use the EDIT and DELETE buttons. -->
+                    <% if(currentUser && pic.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                         <a class="btn btn-sm btn-outline-warning" href="/pics/<%= pic._id %>/edit">Edit</a>
                         <form class="delete-form" action="/pics/<%= pic._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-sm btn-outline-danger">Delete</button>
@@ -46,7 +47,7 @@
                             <span>10 days ago</span>
                         </div>
                         <p><%= comment.text %></p>
-                        <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                             <a class="btn btn-sm btn-outline-warning" href="/pics/<%= pic._id %>/comments/<%= comment._id %>/edit">Edit</a>
                             <form class="delete-form" action="/pics/<%= pic._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-sm btn-outline-danger">Delete</button>

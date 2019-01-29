@@ -7,7 +7,6 @@ var picSchema = new mongoose.Schema({
     picName: String,
     picURL: String,
     picDescription: String,
-    picLocation: String,
     cameraMake: String,
     cameraModel: String,
     focalLength: String,

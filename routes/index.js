@@ -26,6 +26,11 @@ router.get("/register", function(req, res){
 // Sign Up logic
 router.post("/register", function(req,res){
     var newUser = new User({username: req.body.username});
+    // locus allows us to stop the code at this point.
+    // eval(require('locus'));
+    if (req.body.adminCode === 'secretCode') {
+        newUser.isAdmin = true;
+    }
     User.register(newUser, req.body.password, function(err, user) {
         if(err) {
             // console.log(err);
