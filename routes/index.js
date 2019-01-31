@@ -25,12 +25,21 @@ router.get("/register", function(req, res){
 
 // Sign Up logic
 router.post("/register", function(req,res){
-    var newUser = new User({username: req.body.username});
+    var newUser = new User({
+            // Notice that 'password' is not in the following section.
+            // It is handled in the 'User.register' line below.
+            username: req.body.username,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            avatar: req.body.avatar
+        });
     // locus allows us to stop the code at this point.
     // eval(require('locus'));
     if (req.body.adminCode === 'secretCode') {
         newUser.isAdmin = true;
     }
+    
     User.register(newUser, req.body.password, function(err, user) {
         if(err) {
             // console.log(err);
@@ -69,6 +78,24 @@ router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "Logged you out!");
     res.redirect("/pics");
+});
+
+// USER PROFILE
+router.get("/users/:id", function(req, res) {
+    User.findById(req.params.id, function(err, foundUser) {
+        if(err) {
+            req.flash("error", "Something went wrong.");
+            res.redirect("/");
+        }
+        // eval(require('locus'));
+        Pic.find().where('author.id').equals(foundUser.id).exec(function(err, pic) {
+            if(err) {
+                req.flash("error", "Something went wrong.");
+                res.redirect("/");
+            }
+            res.render("users/show", {user: foundUser, pic: pic});
+        });
+    });
 });
 
 module.exports = router;

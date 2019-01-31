@@ -5,16 +5,36 @@
         <h1>Sign Up!</h1>
         <form action="/register" method="POST">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input class="form-control" type="text" name="username" id="username" placeholder="ex: John Doe">
+                <label for="username">* Username</label>
+                <input class="form-control" type="text" name="username" id="username" placeholder="username">
             </div>
             <div class="form-group">
-                <label for="pasword">Password</label>
-                <input class="form-control" type="password" name="password" id="password" placeholder="Your Password">
+                <label for="pasword">* Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="password">
+            </div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" type="text" name="firstName" id="firstName" placeholder="first name">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" type="text" name="lastName" id="lastName" placeholder="last name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="email" placeholder="john@doe.com">
+            </div>
+            <div class="form-group">
+                <label for="avatar">Avatar URL</label>
+                <input class="form-control" type="text" name="avatar" id="avatar" placeholder="image url">
+            </div>
+            <div class="form-group">
+                <label for="bio">About</label>
+                <input class="form-control" type="text" name="bio" id="bio" placeholder="tell us about yourself">
             </div>
             <div class="form-group">
                 <label for="adminCode">Admin Access Code</label>
-                <input class="form-control" type="text" name="adminCode" id="adminCode" placeholder="Optional - only for admins">
+                <input class="form-control" type="password" name="adminCode" id="adminCode" placeholder="optional - only for admins">
             </div>
             <div class="form-group">
                 <button class="btn btn-lg btn-primary btn-block">Sign Up</button>

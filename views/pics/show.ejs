@@ -21,7 +21,9 @@
                         <h4><%= pic.picLocation %></h4>
                     </div>
                     <p><%= pic.picDescription %></p>
-                    <p><em>Submitted By: <%= pic.author.username %></em></p>
+                    
+                    <p><em>Submitted By: <a href="/users/<%= pic.author.id %>"><%= pic.author.username %></a></em></p>
+                    
                     <!-- if there is a current user, AND if the campground's user id is the same as the current user's id, -->
                     <!-- then show the EDIT and DELETE buttons.-->
                     <!-- Also allow administrators to use the EDIT and DELETE buttons. -->
