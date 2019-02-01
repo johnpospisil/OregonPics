@@ -66,6 +66,20 @@ app.use("/", indexRoutes);
 app.use("/pics", picRoutes);
 app.use("/pics/:id/comments", commentRoutes);
 
+// SET PIC HEIGHT AND WIDTH
+// var img = new Image();
+
+// img.onload = function(){
+//   var height = img.height;
+//   var width = img.width;
+
+//   // code here to use the dimensions
+  
+  
+  
+// }
+
+
 // END
 app.listen(process.env.PORT, process.env.IP, function() {
    console.log("OregonPics Server is listening!!!");
