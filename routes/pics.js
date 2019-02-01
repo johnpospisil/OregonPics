@@ -19,15 +19,31 @@ var geocoder = NodeGeocoder(options);
 // ABOVE for Google Maps
 
 // INDEX Route - show all pics
-router.get("/", function(req, res) { // show the pics
-    // Get all pics from DB
-    Pic.find({}, function(err, allPics){
-        if(err){
-            console.log(err);
-        } else {
-            res.render("pics/index",{pics:allPics});
-        }
-    });
+router.get("/", function(req, res){
+    var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all pics from DB
+        Pic.find({picName: regex}, function(err, allPics){
+           if(err){
+               console.log(err);
+           } else {
+              if(allPics.length < 1) {
+                  noMatch = "No pics match that query, please try again.";
+              }
+              res.render("pics/index",{pics:allPics, noMatch: noMatch});
+           }
+        });
+    } else {
+        // Get all pics from DB
+        Pic.find({}, function(err, allPics){
+           if(err){
+               console.log(err);
+           } else {
+              res.render("pics/index",{pics:allPics, noMatch: noMatch});
+           }
+        });
+    }
 });
 
 //CREATE - add new pic to DB
@@ -140,7 +156,9 @@ router.delete("/:id", middleware.checkPicOwnership, function(req, res){
     });
 });
 
-
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 
 
 module.exports = router;
