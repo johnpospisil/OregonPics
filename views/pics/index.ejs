@@ -2,11 +2,11 @@
 
 <div class="container"> <!-- adds space to the left and right of the page/div-->
     
-    <header class="jumbotron">
+    <header class="jumbotron shadow-2">
         <div class="container"> <!-- Allows space between the text and the jumbotron border for small screens-->
             <h1>Beautiful Pics from the Great State of</h1>  
             <h2 class="display-4">OREGON</h2>
-            <p>A place to see and share photos of Oregon</p>
+            <p>All photos are part of the Public Domain and are free for use!</p>
             <a class="btn btn-primary btn-lg" href="/pics/new">Share A Picture</a>
         </div>
     </header>
@@ -21,10 +21,12 @@
         <div class="row text-center">
             <% pics.forEach(function(pic) { %>
                 <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="shadow-2">
                     <img class="card-img-top" src="<%= pic.picURL %>">
                     <div class="card-body">
                         <p class="card-title"><%= pic.picName %></p>
                         <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"> More Info</a>
+                    </div>
                     </div>
                 </div>
             <% }); %>
