@@ -17,6 +17,7 @@ var picSchema = new mongoose.Schema({
     location: String,
     lat: Number,
     lng: Number,
+    createdAt: { type: Date, default: Date.now },
     // this 'author' object helps associate a user with a newly created pic.
     author: {
         id: {

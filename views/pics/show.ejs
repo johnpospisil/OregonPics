@@ -22,7 +22,7 @@
                     </div>
                     <p><%= pic.picDescription %></p>
                     
-                    <p><em>Submitted By: <a href="/users/<%= pic.author.id %>"><%= pic.author.username %></a></em></p>
+                    <p><em>Submitted By: <a href="/users/<%= pic.author.id %>"><%= pic.author.username %></a>, <%= moment(pic.createdAt).fromNow() %></em></p>
                     
                     <!-- if there is a current user, AND if the campground's user id is the same as the current user's id, -->
                     <!-- then show the EDIT and DELETE buttons.-->
@@ -46,7 +46,7 @@
                     <% pic.comments.forEach(function(comment) { %>
                         <div class="row justify-content-between">
                             <strong><%= comment.author.username %></strong>
-                            <span>10 days ago</span>
+                            <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
                         </div>
                         <p><%= comment.text %></p>
                         <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>

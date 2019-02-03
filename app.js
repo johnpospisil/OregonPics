@@ -33,6 +33,9 @@ app.use(flash());
 // remove entries from the database, and seed it with data from the 'seed.js' file
 // seedDB();
 
+// used for 'time since' features
+app.locals.moment = require('moment');
+
 // PASSPORT CONFIGURATION
 // mongoose.connect("mongodb://dbusername:dbuserpassword@ds153304.mlab.com:53304/yelpcamp99", {useNewUrlParser: true});
 app.use(require("express-session") ({
