@@ -15,8 +15,9 @@
     <body>
         
         
-<nav class="navbar navbar-expand-lg bg-light">
-  <a class="navbar-brand" href="/"><i class="fas fa-camera-retro"></i> picsOregon</a>
+<!--<nav class="navbar navbar-expand-lg bg-light top-nav">-->
+<nav class="navbar navbar-expand-lg bg-light top-nav">
+  <a class="navbar-brand ubuntu" href="/"><i class="fas fa-images"></i> picsOregon</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,10 +31,10 @@
                     <!--%= console.log("currentUser: " + currentUser); %-->
                     <% if (!currentUser) { %>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-secondary" href="/login">Login</a>
+                            <a class="nav-link btn btn-primary" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-success" href="/register">Signup</a>
+                            <a class="nav-link btn btn-success" href="/register">Signup</a>
                         </li>
                    
                         <% } else { %>
@@ -41,14 +42,14 @@
                             <a class="nav-link btn btn-outline-secondary" href="/logout">Log Out</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Signed In as: <%= currentUser.username %></a>
+                            <a class="nav-link" href="/users/<%= currentUser.id %>">Signed In as: <%= currentUser.username %></a>
                         </li>
                     <% } %>
                 </ul>
                 <form action="/pics" method="GET" class="form-inline">
                     <div class="form-group"> 
                         <input type="text" name="search" placeholder="Search Pics..." class="form-control searchbarSpacing">
-                        <input type="submit" value="Search" class="btn btn-outline-success">
+                        <input type="submit" value="Search" class="btn btn-outline-secondary">
                     </div>
                 </form>
             </div>
