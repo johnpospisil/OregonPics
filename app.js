@@ -10,13 +10,12 @@ var express    = require("express"),
     methodOverride = require("method-override"),
     Pic = require("./models/pic"),
     Comment    = require("./models/comment"),
+    commentRoutes    = require("./routes/comments"),
+    reviewRoutes     = require("./routes/reviews"),
+    picRoutes = require("./routes/pics"),
+    indexRoutes      = require("./routes/index"),
     User       = require("./models/user");
     // seedDB     = require("./seeds");
-  
-// setup links to files containing routes  
-var indexRoutes = require("./routes/index"),
-    picRoutes = require("./routes/pics"),
-    commentRoutes = require("./routes/comments");
     
 // connect mongoose to either mLab, or Cloud9. If mLab DB is not avilable, connect to Cloud9 DB.   
 // mongodb://<dbuser>:<dbpassword>@ds149984.mlab.com:49984/oregonpics
@@ -68,6 +67,7 @@ app.use(function(req, res, next) {
 app.use("/", indexRoutes);
 app.use("/pics", picRoutes);
 app.use("/pics/:id/comments", commentRoutes);
+app.use("/pics/:id/reviews", reviewRoutes);
 
 // END
 app.listen(process.env.PORT, process.env.IP, function() {

@@ -28,7 +28,7 @@
                     
                     <p><em>Submitted By: <a href="/users/<%= pic.author.id %>"><%= pic.author.username %></a>, <%= moment(pic.createdAt).fromNow() %></em></p>
                     
-                    <!-- if there is a current user, AND if the campground's user id is the same as the current user's id, -->
+                    <!-- if there is a current user, AND if the pic's user id is the same as the current user's id, -->
                     <!-- then show the EDIT and DELETE buttons.-->
                     <!-- Also allow administrators to use the EDIT and DELETE buttons. -->
                     <% if(currentUser && pic.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
@@ -40,6 +40,62 @@
                 </div>
             </div>
             
+            
+            <!--REVIEW SECTION-->
+            <div class="thumbnail">
+                <div class="caption-full">
+                    <% if (pic.rating === 0) { %>
+                    <h5>
+                        <em>No reviews yet.</em>
+                    </h5>
+                    <% } else { %>
+                    <p>
+                        <span class="fas fa-star checked"></span>
+                        <span class="fas fa-star <% if (pic.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fas fa-star <% if (pic.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fas fa-star <% if (pic.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fas fa-star <% if (pic.rating > 4.5) { %> checked <% } %>"></span>
+                        <em>(total reviews: <%= pic.reviews.length %>)</em>
+                    </p>
+                    <p>
+                        Current pic rating: <strong><%= pic.rating.toFixed(2) %></strong>
+                    </p>
+                    <p><h4>Latest reviews for this pic:</h4></p>
+                    <hr style="margin-top: 0;">
+                    <% pic.reviews.slice(0, 5).forEach(function(review){ %>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <%- '<span class="fas fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fas fa-star"></span>'.repeat(5 - review.rating) %>
+                            <div>Review by: <strong><%= review.author.username %></strong></div>
+                            <span><em><%= review.updatedAt.toDateString() %></em></span>
+                        </div>
+                        <div class="col-md-9">
+                            <p style="text-align: justify; word-wrap: break-word;">
+                                <%= review.text %>
+                            </p>
+                            <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-xs btn-warning"
+                               href="/pics/<%=pic._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                            <form id="delete-form" action="/pics/<%=pic._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <hr>
+                    <% }); %>
+                    <div style="margin-bottom: 10px;">
+                        <h4><a href="/pics/<%= pic._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See all reviews</a></h4>
+                    </div>
+                    <% } %>
+                    <div>
+                        <a class="btn btn-primary btn-lg <% if (currentUser && pic.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/pics/<%= pic._id %>/reviews/new">
+                            Write a New Review</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!--COMMENTS SECTION-->
             <div class="card bg-light">
                 <div class="card-body">
                     <div class="text-right">

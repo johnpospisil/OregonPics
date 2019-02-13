@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var Pic = require("../models/pic");
-// an index.js file is actually being required below.
-// 'index.js' is assumed to be the default route in JS, just like HTML.
 var middleware = require("../middleware");
+var Review = require("../models/review");
+var Comment = require("../models/comment");
 
 // BELOW for Google Maps
 var NodeGeocoder = require('node-geocoder');
@@ -93,9 +93,11 @@ router.get("/new", middleware.isLoggedIn, function(req, res) { // show the form 
 
 // SHOW Pic Route - show info about a specific pic
 router.get("/:id", function(req, res) {
-    //find the pic with the provided ID, then populate the comments for that pic,
-    // then execute the query.
-    Pic.findById(req.params.id).populate("comments").exec(function(err, foundPic) {
+    //find the pic with the provided ID
+    Pic.findById(req.params.id).populate("comments").populate({
+        path: "reviews",
+        options: {sort: {createdAt: -1}}
+    }).exec(function(err, foundPic) {
         if (err) {
             console.log(err);
         } else {
@@ -131,6 +133,8 @@ router.put("/:id", middleware.checkPicOwnership, function(req, res){
     req.body.pic.lat = data[0].latitude;
     req.body.pic.lng = data[0].longitude;
     req.body.pic.location = data[0].formattedAddress;
+    
+    delete req.body.pic.rating;
 
     Pic.findByIdAndUpdate(req.params.id, req.body.pic, function(err, pic){
         if(err){
@@ -147,11 +151,28 @@ router.put("/:id", middleware.checkPicOwnership, function(req, res){
 
 // DESTROY Pic Route
 router.delete("/:id", middleware.checkPicOwnership, function(req, res){
-    Pic.findByIdAndRemove(req.params.id, function(err){
+    Pic.findByIdAndRemove(req.params.id, function(err, pic){
         if(err) {
             res.redirect("/pics");
         } else {
-            res.redirect("/pics");
+            // deletes all comments associated with the pic
+            Comment.remove({"_id": {$in: pic.comments}}, function (err) {
+                if (err) {
+                    console.log(err);
+                    return res.redirect("/pics");
+                }
+                // deletes all reviews associated with the pic
+                Review.remove({"_id": {$in: pic.reviews}}, function (err) {
+                    if (err) {
+                        console.log(err);
+                        return res.redirect("/pics");
+                    }
+                    //  delete the pic
+                    pic.remove();
+                    req.flash("success", "Pic deleted successfully!");
+                    res.redirect("/pics");
+                });
+            });
         }
     });
 });
