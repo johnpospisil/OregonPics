@@ -3,12 +3,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <p class="lead">OregonPics</p>
+            <p class="lead">Photo Specs</p>
             <div class=list-group>
-                <li class="list-group-item active">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
+                <li class="list-group-item"><em>Camera Make: </em><strong><%= pic.cameraMake %></strong></li>
+                <li class="list-group-item"><em>Camera Model: </em><strong><%= pic.cameraModel %></strong></li>
+                <li class="list-group-item"><em>Focal Length: </em><strong><%= pic.focalLength %></strong></li>
+                <li class="list-group-item"><em>Aperture: </em><strong><%= pic.aperature %></strong></li>
+                <li class="list-group-item"><em>Shutter Speed: </em><strong><%= pic.shutterSpeed %></strong></li>
+                <li class="list-group-item"><em>ISO: </em><strong><%= pic.iso %></strong></li>
             </div>
+            <p class="lead">Map</p>
             <div id="map"></div>
         </div>
         
@@ -94,9 +98,3 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvVOhzy1ADsjDGLNI5f6bKvfxC3FmFMcU&callback=initMap"></script>
 
 <% include ../partials/footer %>
-
-
-
-
-
- 

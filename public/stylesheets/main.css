@@ -16,11 +16,6 @@ body {
     color: black;
 }
 
-
-.add-margin-btm {
-    margin-bottom: 15px;
-}
-
 .top-nav {
     margin-bottom: 15px;
 }
@@ -49,10 +44,6 @@ body {
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/*.shadow-heavy {*/
-/*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
-/*}*/
-
 .nav-link.btn {
     padding: 4px;
     margin: 4px;
@@ -63,7 +54,6 @@ body {
 }
 
 .navbar {
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.07), 0 0 20px 0 rgba(0, 0, 0, 0.05);*/
     border-bottom: 1px solid lightgray; 
 }
 
@@ -94,14 +84,10 @@ body {
     border-radius: 0.3rem;
 }
 
-.card-img-top {
-    border: solid gainsboro 1px;
-}
+
 
 .card-body {
-    border: solid gainsboro 1px;
     padding: 10px 10px 15px 10px;
-    /*margin-bottom: 15px;*/
     border-bottom-right-radius: 0.3rem;
     border-bottom-left-radius: 0.3rem;
 }
@@ -119,6 +105,10 @@ body {
 .card {
     border: 0;
     margin-bottom: 15px;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
 }
 
 .row {

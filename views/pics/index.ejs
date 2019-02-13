@@ -17,22 +17,22 @@
         <% } %>
     </div>
     
-    <div class="card"> 
-        <div class="row text-center">
-            <% pics.forEach(function(pic) { %>
-                <div class="col-md-6 col-lg-4 col-xl-3 add-margin-btm">
-                    <div class="shadow-2">
+    
+    <div class="row text-center">
+        <% pics.forEach(function(pic) { %>
+            <div class="col-md-6 col-lg-4 col-xl-3 mb-2">
+                <div class="card shadow-2">
                     <img class="card-img-top" src="<%= pic.picURL %>">
                     <div class="card-body">
                         <p class="card-title"><%= pic.picName %></p>
                         <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"> More Info</a>
                     </div>
-                    </div>
                 </div>
-            <% }); %>
-        </div>
-        
+            </div>
+        <% }); %>
     </div>
+        
+    
 
 </div>
 
