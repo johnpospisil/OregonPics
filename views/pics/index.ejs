@@ -1,13 +1,13 @@
 <% include ../partials/header %>
 
-<div class="container"> <!-- adds space to the left and right of the page/div-->
+<div class="container"> 
     
     <header class="jumbotron shadow-2">
-        <div class="container"> <!-- Allows space between the text and the jumbotron border for small screens-->
+        <div class="container"> 
             <h1>Beautiful Pics from the Great State of</h1>  
             <h2 class="display-4">OREGON</h2>
             <p>All photos are part of the Public Domain and are free for use!</p>
-            <a class="btn btn-primary btn-lg" href="/pics/new">Share A Picture</a>
+            <a class="btn btn-primary btn-lg" href="/pics/new"><i class="fas fa-share fa-sm"></i> Share A Picture</a>
         </div>
     </header>
     
@@ -27,7 +27,7 @@
                         <p class="card-title"><%= pic.picName %></p>
                         
                         <% if (pic.rating === 0) { %>
-                            <p><em>No reviews yet</em></p>
+                            <p class="text-secondary"><em>No reviews yet</em></p>
                         <% } else { %>
                         <p>
                             <span class="fas fa-star checked"></span>
@@ -38,7 +38,7 @@
                         <% } %>
                         </p>
                         
-                        <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"> More Info</a>
+                        <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"><i class="fas fa-info-circle"></i> More Info</a>
                     </div>
                 </div>
             </div>
