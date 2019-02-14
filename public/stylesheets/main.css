@@ -123,3 +123,6 @@ body {
     margin-right: 5px;
 }
 
+.checked {
+    color: orange;
+}

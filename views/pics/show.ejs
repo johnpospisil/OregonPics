@@ -12,14 +12,16 @@
                 <li class="list-group-item"><em>Shutter Speed: </em><strong><%= pic.shutterSpeed %></strong></li>
                 <li class="list-group-item"><em>ISO: </em><strong><%= pic.iso %></strong></li>
             </div>
-            <p class="lead">Map</p>
+            <p class="lead mt-4">Map</p>
             <div id="map"></div>
         </div>
         
         <div class="col-md-9">
             <div class="card"> 
                 <div class="card-body">
-                    <img class="img-fluid" src="<%= pic.picURL %>">
+                    <a href="<%= pic.picURL %>">
+                        <img alt="Link to Full Size Image" src="<%= pic.picURL %>">
+                    </a>
                     <div class="row justify-content-between">
                         <h4><a href=""><%= pic.picName %></a></h4>
                         <h4><%= pic.picLocation %></h4>
@@ -42,8 +44,13 @@
             
             
             <!--REVIEW SECTION-->
-            <div class="thumbnail">
-                <div class="caption-full">
+            <div class="card bg-light shadow-2">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <h4>User Reviews</h4>
+                        <a class="btn btn-primary btn-md <% if (currentUser && pic.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/pics/<%= pic._id %>/reviews/new">
+                            Write a New Review</a>
+                    </div>
                     <% if (pic.rating === 0) { %>
                     <h5>
                         <em>No reviews yet.</em>
@@ -57,10 +64,10 @@
                         <span class="fas fa-star <% if (pic.rating > 4.5) { %> checked <% } %>"></span>
                         <em>(total reviews: <%= pic.reviews.length %>)</em>
                     </p>
-                    <p>
+                    <p class="pb-4">
                         Current pic rating: <strong><%= pic.rating.toFixed(2) %></strong>
                     </p>
-                    <p><h4>Latest reviews for this pic:</h4></p>
+                    <h5>Recent Reviews:</h5>
                     <hr style="margin-top: 0;">
                     <% pic.reviews.slice(0, 5).forEach(function(review){ %>
                     <div class="row">
@@ -70,15 +77,15 @@
                             <span><em><%= review.updatedAt.toDateString() %></em></span>
                         </div>
                         <div class="col-md-9">
-                            <p style="text-align: justify; word-wrap: break-word;">
-                                <%= review.text %>
-                            </p>
+                            <p><%= review.text %></p>
                             <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
-                            <a class="btn btn-xs btn-warning"
+                            <div class="row">
+                            <a class="btn btn-sm btn-outline-warning mr-1"
                                href="/pics/<%=pic._id %>/reviews/<%=review._id %>/edit">Edit</a>
                             <form id="delete-form" action="/pics/<%=pic._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
-                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
                             </form>
+                            </div>
                             <% } %>
                         </div>
                     </div>
@@ -88,18 +95,15 @@
                         <h4><a href="/pics/<%= pic._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See all reviews</a></h4>
                     </div>
                     <% } %>
-                    <div>
-                        <a class="btn btn-primary btn-lg <% if (currentUser && pic.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/pics/<%= pic._id %>/reviews/new">
-                            Write a New Review</a>
-                    </div>
                 </div>
             </div>
             
             <!--COMMENTS SECTION-->
-            <div class="card bg-light">
+            <div class="card bg-light shadow-2">
                 <div class="card-body">
-                    <div class="text-right">
-                        <a class="btn btn-sm btn-outline-success" href="/pics/<%= pic._id %>/comments/new">Add New Comment</a>
+                    <div class="row justify-content-between">
+                        <h4>User Comments</h4>
+                        <a class="btn btn-md btn-success" href="/pics/<%= pic._id %>/comments/new">Add New Comment</a>
                     </div>
                     <hr>
                     <!--show all comments -->
@@ -119,6 +123,7 @@
                     <% }) %>
                 </div>
             </div>
+            
         </div>
         
     </div>

@@ -27,14 +27,16 @@
                         <p class="card-title"><%= pic.picName %></p>
                         
                         <% if (pic.rating === 0) { %>
-                            <em>No reviews yet.</em>
+                            <p><em>No reviews yet</em></p>
                         <% } else { %>
+                        <p>
                             <span class="fas fa-star checked"></span>
                             <span class="fas fa-star <% if (pic.rating > 1.5) { %> checked <% } %>"></span>
                             <span class="fas fa-star <% if (pic.rating > 2.5) { %> checked <% } %>"></span>
                             <span class="fas fa-star <% if (pic.rating > 3.5) { %> checked <% } %>"></span>
                             <span class="fas fa-star <% if (pic.rating > 4.5) { %> checked <% } %>"></span>
                         <% } %>
+                        </p>
                         
                         <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"> More Info</a>
                     </div>
