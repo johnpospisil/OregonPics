@@ -22,21 +22,24 @@
         <% pics.forEach(function(pic) { %>
             <div class="col-md-6 col-lg-4 col-xl-3 mb-2">
                 <div class="card shadow-2">
-                    <img class="card-img-top" src="<%= pic.picURL %>">
+                    <a href="/pics/<%= pic._id %>">
+                    <img class="card-img-top" alt="Link to Pic Page" src="<%= pic.picURL %>">
+                </a>
                     <div class="card-body">
-                        <p class="card-title"><%= pic.picName %></p>
+                        <h5 class="card-title"><%= pic.picName %></h5>
                         
                         <% if (pic.rating === 0) { %>
                             <p class="text-secondary"><em>No reviews yet</em></p>
                         <% } else { %>
-                        <p>
+                        <div class="mb-3">
                             <span class="fas fa-star checked"></span>
                             <span class="fas fa-star <% if (pic.rating > 1.5) { %> checked <% } %>"></span>
                             <span class="fas fa-star <% if (pic.rating > 2.5) { %> checked <% } %>"></span>
                             <span class="fas fa-star <% if (pic.rating > 3.5) { %> checked <% } %>"></span>
                             <span class="fas fa-star <% if (pic.rating > 4.5) { %> checked <% } %>"></span>
+                            <em class="text-secondary">(<%= pic.reviews.length %>)</em>
+                        </div>
                         <% } %>
-                        </p>
                         
                         <a href="/pics/<%= pic._id %>" class="btn btn-outline-primary btn-sm"><i class="fas fa-info-circle"></i> More Info</a>
                     </div>

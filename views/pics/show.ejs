@@ -21,12 +21,13 @@
         
         <div class="col-md-9">
             <div class="card shadow-2">
-                <img src="<%= pic.picURL %>" class="card-img-top" alt="Link to Full-Size Image">
+                <a href="<%= pic.picURL %>">
+                    <img border="0" alt="Link to Full-Size Image" src="<%= pic.picURL %>">
+                </a>
                 <div class="card-body bg-light">
                     <h4 class="card-title"><a href=""><%= pic.picName %></a></h4>
                     <p class="card-text"><%= pic.picDescription %></p>
-                    <p><em>Submitted By: <a href="/users/<%= pic.author.id %>"><%= pic.author.username %></a>, <%= moment(pic.createdAt).fromNow() %></em></p>
-                    
+                    <p><em>Submitted By: <a href="/users/<%= pic.author.id %>"><%= pic.author.username %></a>, <%= moment(pic.createdAt).fromNow() %> on <%= pic.updatedAt.toDateString() %></em></p>
                     <!-- if there is a current user, AND if the pic's user id is the same as the current user's id, -->
                     <!-- then show the EDIT and DELETE buttons.-->
                     <!-- Also allow administrators to use the EDIT and DELETE buttons. -->

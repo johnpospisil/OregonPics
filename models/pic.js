@@ -43,6 +43,9 @@ var picSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
+}, {
+    // if timestamps are set to true, mongoose assigns createdAt and updatedAt fields to your schema, the type assigned is Date.
+    timestamps: true
 });
 
 module.exports = mongoose.model("Pic", picSchema);
