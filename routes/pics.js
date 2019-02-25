@@ -35,13 +35,27 @@ router.get("/", function(req, res){
            }
         });
     } else {
+        // following lines are for pagination
+        var perPage = 8;
+        var pageQuery = parseInt(req.query.page);
+        var pageNumber = pageQuery ? pageQuery : 1;
         // Get all pics from DB
-        Pic.find({}, function(err, allPics){
-           if(err){
-               console.log(err);
-           } else {
-              res.render("pics/index",{pics:allPics, noMatch: noMatch});
-           }
+        Pic.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allPics) {
+            if(err) {
+                console.log(err);
+            }
+            Pic.count().exec(function (err, count) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render("pics/index", {
+                        pics: allPics,
+                        noMatch: noMatch,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage)
+                    });
+                }
+            });
         });
     }
 });

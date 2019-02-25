@@ -47,9 +47,57 @@
             </div>
         <% }); %>
     </div>
-        
     
-
+    <!--PAGINATION-->
+    <div class="row text-center">
+        <div class="mx-auto">
+            <nav aria-label="Pic Pages"></nav>
+            <% if (pages && pages > 0) { %>
+                <ul class="pagination text-center">
+                    <% if (current == 1) { %>
+                    <li class="disabled page-item"><a class="page-link">First</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/pics">First</a></li>
+                <% } %>
+ 
+                <% if (current == 1) { %>
+                    <li class="disabled page-item"><a class="page-link">«</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/pics?page=<%= Number(current) - 1 %>">«</a></li>
+                <% } %>
+ 
+                <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                <% if (i !== 1) { %>
+                    <li class="disabled page-item"><a class="page-link">...</a></li>
+                <% } %>
+                <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                    <% if (i == current) { %>
+                        <li class="active page-item"><a class="page-link"><%= i %></a></li>
+                    <% } else { %>
+                        <li class="page-item"><a class="page-link" href="/pics?page=<%= i %>"><%= i %></a></li>
+                    <% } %>
+                    <% if (i == Number(current) + 4 && i < pages) { %>
+                        <li class="disabled page-item"><a class="page-link">...</a></li>
+                    <% } %>
+                <% } %>
+ 
+                <% if (current == pages) { %>
+                    <li class="disabled page-item"><a class="page-link">»</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/pics?page=<%= Number(current) + 1 %>">»</a></li>
+                <% } %>
+ 
+                <% if (current == pages) { %>
+                    <li class="disabled page-item"><a class="page-link">Last</a></li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/pics?page=<%= pages %>">Last</a></li>
+                <% } %>
+            </ul>
+        <% } %>
+        </nav>
+        </div>
+    </div>
+        
 </div>
 
 <% include ../partials/footer %>
