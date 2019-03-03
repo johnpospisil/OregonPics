@@ -32,7 +32,8 @@ router.post("/register", function(req,res){
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            avatar: req.body.avatar
+            avatar: req.body.avatar,
+            bio: req.body.bio
         });
     // locus allows us to stop the code at this point.
     // eval(require('locus'));
